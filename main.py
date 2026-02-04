@@ -9,28 +9,18 @@ class UI(customtkinter.CTk):
         self.title("SFES V1.0")  # SFES, Stadium Fan Entertainment System (Name is a WIP)
         self.geometry(f"{1200}x{600}")  # Size of Window by default
 
-        self.columnconfigure(0, weight=1)
-        self.rowconfigure(0, weight=1)
+        for i in range(0, 6):
+            self.rowconfigure(i, weight=1)
 
-        self.options = customtkinter.CTkTabview(self)
-        self.options.grid(row=0, column=0, sticky="nsew", padx=20, pady=20)
+        self.columnconfigure(0, weight=3)
+        self.columnconfigure(1, weight=2)
 
-        #options for the tabmenu
-        self.options.add("Control Panel")
-        self.control_panel_frame = customtkinter.CTkFrame(self.options.tab("Control Panel"))
-        self.control_panel_frame.grid(row=0, column=0, sticky="nsew", padx=20, pady=20)
+        self.seat_frame = customtkinter.CTkFrame(self)
+        self.seat_frame.grid(row=0, column=0, rowspan=4, sticky="nsew", padx=20, pady=20)
 
-        self.control_panel_frame.columnconfigure(0, weight=1)
-        self.control_panel_frame.columnconfigure(1, weight=2)
+        self.seat_section_drop = customtkinter.CTkComboBox(self, values=["SECTION 1", "SECTION 2"])
+        self.seat_section_drop.grid(row=4, column=0, sticky="nw", padx=20, pady=20)
 
-        self.cp_title = customtkinter.CTkLabel(self.control_panel_frame, text="Control Panel")
-        self.cp_title.grid(row=0, column=0, padx=20, pady=20)
-
-        self.cp_title2 = customtkinter.CTkLabel(self.control_panel_frame, text="Hello")
-        self.cp_title2.grid(row=0, column=1, padx=20, pady=20)
-
-        self.options.add("Occupancy info")
-        self.options.add("Orders")
 
 
 window = UI() #creating a UI object from my class
